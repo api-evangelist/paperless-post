@@ -1,0 +1,46 @@
+generated: '2026-08-04'
+method: probed
+source: https://status.paperlesspost.com/
+versioning:
+  scheme: date-versioned (UCP protocol dates, storefront only)
+  current: '2026-04-08'
+  supported: ['2026-04-08', '2026-01-23']
+  docs: https://partyshop.paperlesspost.com/.well-known/ucp
+  note: >-
+    The only versioned contract on any paperlesspost.com host is the Universal
+    Commerce Protocol profile served by the Party Shop storefront. Paperless
+    Post publishes no API versioning policy of its own.
+deprecation:
+  policy_url: null
+  sunset_header: null
+  note: No deprecation or sunset policy is published.
+sla:
+  url: null
+  uptime_target: null
+status_page: https://status.paperlesspost.com/
+status_page_platform: Atlassian Statuspage
+status_api:
+  summary: https://status.paperlesspost.com/api/v2/summary.json
+  status: https://status.paperlesspost.com/api/v2/status.json
+  components: https://status.paperlesspost.com/api/v2/components.json
+  feeds:
+  - https://status.paperlesspost.com/history.rss
+  - https://status.paperlesspost.com/history.atom
+  note: Standard Atlassian Statuspage v2 API, publicly readable without authentication.
+status_components:
+- Website
+- Image Rendering and Loading
+- Email Sending
+- Text message sending
+- Payment Processing
+- iOS App
+- Android App
+deprecated_operations: []
+x-evidence:
+  fetched: '2026-08-04'
+  urls:
+  - {url: 'https://status.paperlesspost.com/', http_status: 200}
+  - {url: 'https://status.paperlesspost.com/api/v2/summary.json', http_status: 200}
+  - {url: 'https://status.paperlesspost.com/api/v2/components.json', http_status: 200}
+  - {url: 'https://status.paperlesspost.com/history.rss', http_status: 200}
+  - {url: 'https://partyshop.paperlesspost.com/.well-known/ucp', http_status: 200}

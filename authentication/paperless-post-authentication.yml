@@ -1,0 +1,69 @@
+generated: '2026-08-04'
+method: probed
+source: https://partyshop.paperlesspost.com/.well-known/openid-configuration
+docs: https://partyshop.paperlesspost.com/agents.md
+note: >-
+  Paperless Post publishes no developer authentication documentation. This
+  profile was probed from the OAuth/OIDC discovery documents served on the
+  Paperless Post Party Shop storefront host (partyshop.paperlesspost.com),
+  which delegates to Shopify's customer-account authorization server. The core
+  invitation product at www.paperlesspost.com has no public authenticated API;
+  its /api/v1 endpoints are session-cookie surfaces for its own first-party web
+  and mobile clients.
+summary:
+  types: [oauth2, openIdConnect]
+  api_key_in: []
+  oauth2_flows: [authorizationCode]
+  pkce: [S256]
+  bearer_methods: [header]
+  anonymous_read: true
+schemes:
+- name: shopify-customer-account-oidc
+  type: openIdConnect
+  openIdConnectUrl: https://partyshop.paperlesspost.com/.well-known/openid-configuration
+  issuer: https://shopify.com/authentication/53345157285
+  authorization_endpoint: https://shopify.com/authentication/53345157285/oauth/authorize
+  token_endpoint: https://shopify.com/authentication/53345157285/oauth/token
+  end_session_endpoint: https://shopify.com/authentication/53345157285/logout
+  jwks_uri: https://shopify.com/authentication/53345157285/.well-known/jwks.json
+  response_types_supported: [code]
+  grant_types_supported: [authorization_code]
+  token_endpoint_auth_methods_supported: [client_secret_basic]
+  id_token_signing_alg_values_supported: [RS256]
+  code_challenge_methods_supported: [S256]
+  sources: [well-known/paperless-post-openid-configuration.json]
+- name: shopify-oauth2-authorization-server
+  type: oauth2
+  rfc: RFC 8414
+  metadata_url: https://partyshop.paperlesspost.com/.well-known/oauth-authorization-server
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://shopify.com/authentication/53345157285/oauth/authorize
+    tokenUrl: https://shopify.com/authentication/53345157285/oauth/token
+  sources: [well-known/paperless-post-oauth-authorization-server.json]
+protected_resource:
+  rfc: RFC 9728
+  metadata_url: https://partyshop.paperlesspost.com/.well-known/oauth-protected-resource
+  resource: https://partyshop.paperlesspost.com
+  authorization_servers: [https://shopify.com/authentication/53345157285]
+  bearer_methods_supported: [header]
+  sources: [well-known/paperless-post-oauth-protected-resource.json]
+unauthenticated_surface:
+  description: >-
+    The storefront's read-only product/collection JSON endpoints are documented
+    as requiring no authentication.
+  endpoints:
+  - GET https://partyshop.paperlesspost.com/collections/all/products.json
+  - GET https://partyshop.paperlesspost.com/collections/{handle}/products.json
+  - GET https://partyshop.paperlesspost.com/products/{handle}.json
+  - GET https://partyshop.paperlesspost.com/search?q={query}&type=product
+  verified:
+  - {url: 'https://partyshop.paperlesspost.com/collections/all/products.json?limit=2',
+    http_status: 200, content_type: application/json}
+  source: https://partyshop.paperlesspost.com/agents.md
+x-evidence:
+  fetched: '2026-08-04'
+  urls:
+  - {url: 'https://partyshop.paperlesspost.com/.well-known/openid-configuration', http_status: 200}
+  - {url: 'https://partyshop.paperlesspost.com/.well-known/oauth-authorization-server', http_status: 200}
+  - {url: 'https://partyshop.paperlesspost.com/.well-known/oauth-protected-resource', http_status: 200}

@@ -1,0 +1,57 @@
+generated: '2026-08-04'
+method: probed
+source: live probes of paperlesspost.com hosts (see x-evidence)
+scope: >-
+  Assertions cover the Paperless Post Party Shop storefront
+  (partyshop.paperlesspost.com), the only paperlesspost.com host with a
+  machine-readable contract. The core invitation product at
+  www.paperlesspost.com conforms to none of these because it publishes no API.
+standards:
+- id: oauth2
+  conforms: true
+  evidence: /.well-known/oauth-authorization-server returns authorization_code flow metadata (200)
+- id: oidc
+  conforms: true
+  evidence: /.well-known/openid-configuration advertises issuer, jwks_uri, RS256 id_token signing (200)
+- id: rfc8414-authorization-server-metadata
+  conforms: true
+  evidence: well-known/paperless-post-oauth-authorization-server.json
+- id: rfc9728-protected-resource-metadata
+  conforms: true
+  evidence: well-known/paperless-post-oauth-protected-resource.json names resource + authorization_servers
+- id: pkce-rfc7636
+  conforms: true
+  evidence: code_challenge_methods_supported includes S256
+- id: mcp
+  conforms: true
+  evidence: JSON-RPC 2.0 MCP endpoint at /api/ucp/mcp responds with structured jsonrpc errors; tools/list gated on agent profile
+- id: ucp-universal-commerce-protocol
+  conforms: true
+  evidence: /.well-known/ucp advertises dev.ucp.shopping versions 2026-04-08 and 2026-01-23
+- id: llmstxt
+  conforms: true
+  evidence: /llms.txt returns text/markdown (200) on partyshop.paperlesspost.com
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: no first-party security.txt on any paperlesspost.com host; the 200 on status.paperlesspost.com is Atlassian Statuspage's vendor document
+- id: rfc8615-agent-card
+  conforms: false
+  evidence: /.well-known/agent-card.json and /.well-known/agent.json 404 on every host
+- id: openapi
+  conforms: false
+  evidence: no OpenAPI/Swagger document found on any host (see x-coverage in apis.yml)
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: no application/problem+json observed; MCP errors use the JSON-RPC error envelope
+- id: rfc9309-robots
+  conforms: true
+  evidence: https://www.paperlesspost.com/robots.txt returns a parseable robots policy (200)
+x-evidence:
+  fetched: '2026-08-04'
+  urls:
+  - {url: 'https://partyshop.paperlesspost.com/.well-known/ucp', http_status: 200}
+  - {url: 'https://partyshop.paperlesspost.com/.well-known/openid-configuration', http_status: 200}
+  - {url: 'https://partyshop.paperlesspost.com/.well-known/oauth-protected-resource', http_status: 200}
+  - {url: 'https://partyshop.paperlesspost.com/llms.txt', http_status: 200}
+  - {url: 'https://www.paperlesspost.com/.well-known/agent-card.json', http_status: 404}
+  - {url: 'https://www.paperlesspost.com/openapi.json', http_status: 404}

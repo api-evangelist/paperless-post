@@ -1,0 +1,61 @@
+generated: '2026-08-04'
+method: searched
+source: https://partyshop.paperlesspost.com/agents.md
+scope: >-
+  Cross-cutting request/response semantics for the only machine-callable
+  Paperless Post surface, the Party Shop storefront
+  (partyshop.paperlesspost.com). www.paperlesspost.com has no public API and
+  therefore no published conventions.
+authentication:
+  style: OAuth 2.0 authorization code + PKCE (S256) via OIDC; bearer token in the
+    Authorization header
+  anonymous: Read-only product/collection JSON requires no authentication
+  see: authentication/paperless-post-authentication.yml
+idempotency:
+  supported: false
+  note: >-
+    No idempotency key header, parameter, or retry contract is documented on any
+    Paperless Post surface. Deliberately NOT wired as a type Idempotency pointer.
+pagination:
+  style: page + limit query parameters on the storefront JSON endpoints
+  params: [limit, page]
+  example: /collections/all/products.json?limit=2
+  note: Shopify storefront JSON convention; not documented by Paperless Post itself.
+versioning:
+  style: date-versioned protocol negotiation (UCP)
+  current: '2026-04-08'
+  see: lifecycle/paperless-post-lifecycle.yml
+error_envelope:
+  style: JSON-RPC 2.0 error object on the MCP endpoint
+  shape: '{"jsonrpc":"2.0","id":<id>,"error":{"code":<int>,"message":<string>,"data":{"code":<slug>,"content":<string>,"continue_url":<url>}}}'
+  observed:
+  - {code: -32001, message: UCP discovery failed, data_code: invalid_profile_url}
+  problem_json: false
+rate_limits:
+  documented: true
+  quantified: false
+  signal: 'HTTP 429'
+  guidance: The MCP endpoint is rate-limited per IP; agents must back off on 429 responses.
+  note: No numeric limit, window, or RateLimit-* header contract is published.
+agent_context:
+  required_context_fields:
+  - context.address_country
+  - context.currency
+  human_in_the_loop: >-
+    Checkout completion requires contemporaneous buyer approval; agents must not
+    complete payment without explicit consent.
+  recommended_client_skill: https://shop.app/SKILL.md
+request_tracing:
+  request_id_header: null
+metadata:
+  supported: false
+field_expansion:
+  supported: false
+x-evidence:
+  fetched: '2026-08-04'
+  urls:
+  - {url: 'https://partyshop.paperlesspost.com/agents.md', http_status: 200}
+  - {url: 'https://partyshop.paperlesspost.com/llms.txt', http_status: 200}
+  - {url: 'https://partyshop.paperlesspost.com/api/ucp/mcp', http_status: 422, method: POST}
+  - {url: 'https://partyshop.paperlesspost.com/collections/all/products.json?limit=2',
+    http_status: 200}

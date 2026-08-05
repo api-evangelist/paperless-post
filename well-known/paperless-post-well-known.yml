@@ -1,0 +1,85 @@
+generated: '2026-08-04'
+method: probed
+source: live GET of /.well-known/* on every Paperless Post host
+note: >-
+  The primary consumer site (www.paperlesspost.com) publishes no /.well-known/
+  discovery surface at all — every path returns an S3 NoSuchKey 404. The entire
+  machine-readable discovery surface on a paperlesspost.com host lives on
+  partyshop.paperlesspost.com, the Paperless Post Party Shop storefront, which
+  is Shopify-hosted and therefore ships Shopify's UCP + OAuth/OIDC discovery
+  documents. The security.txt found on status.paperlesspost.com is Atlassian
+  Statuspage's vendor document (Canonical points at atlassian.com), NOT a
+  Paperless Post vulnerability-disclosure program — it is recorded here for
+  evidence and deliberately NOT wired as a SecurityTxt or Security pointer.
+hosts:
+- host: https://www.paperlesspost.com
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/oauth-protected-resource, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}
+  - {path: /.well-known/ucp, status: 404}
+  - {path: /llms.txt, status: 404}
+  - {path: /agents.md, status: 404}
+- host: https://partyshop.paperlesspost.com
+  platform: Shopify
+  documents:
+  - path: /.well-known/ucp
+    status: 200
+    content_type: application/json
+    file: paperless-post-ucp.json
+    note: Universal Commerce Protocol merchant profile (versions 2026-04-08, 2026-01-23)
+  - path: /.well-known/openid-configuration
+    status: 200
+    content_type: application/json
+    file: paperless-post-openid-configuration.json
+    note: OIDC discovery for the Shopify customer-account authorization server
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    content_type: application/json
+    file: paperless-post-oauth-authorization-server.json
+    note: RFC 8414 authorization server metadata (identical body to the OIDC document)
+  - path: /.well-known/oauth-protected-resource
+    status: 200
+    content_type: application/json
+    file: paperless-post-oauth-protected-resource.json
+    note: RFC 9728 protected-resource metadata naming partyshop.paperlesspost.com
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}
+  - path: /llms.txt
+    status: 200
+    content_type: text/markdown
+    file: ../llms/paperless-post-llms.txt
+  - path: /agents.md
+    status: 200
+    content_type: text/markdown
+    file: ../llms/paperless-post-agents.md
+- host: https://status.paperlesspost.com
+  platform: Atlassian Statuspage
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    content_type: text/plain
+    file: paperless-post-status-security.txt
+    first_party: false
+    note: >-
+      Atlassian Statuspage's PGP-signed security.txt. Canonical:
+      https://www.atlassian.com/.well-known/security.txt — contacts are
+      security@atlassian.com. Not a Paperless Post disclosure program.
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}
+  - {path: /llms.txt, status: 404}
+x-evidence:
+  fetched: '2026-08-04'
+  hosts_probed: 3
+  documents_found: 7

@@ -1,7 +1,16 @@
 aid: paperless-post
 name: Paperless Post
-description: 'Paperless Post is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: 'Paperless Post is a New York City based digital and print stationery
+  company whose platform lets people design, send, and manage online invitations,
+  greeting cards, save-the-dates, and free Flyers for weddings, birthdays, holidays,
+  business events, and other occasions. Founded in 2008 by siblings James and Alexa
+  Hirschfeld, it pairs an in-house design studio with licensed designer collections
+  (Oscar de la Renta, Rifle Paper Co., Marimekko and others) and adds RSVP tracking,
+  guest messaging, event websites, mobile apps, and a Party Shop. Paperless Post
+  publishes no public developer program, API reference, or machine-readable specification;
+  the /api/v1 endpoints named in its robots.txt serve its own first-party web and
+  mobile clients only.'
+image: https://avatars.githubusercontent.com/u/282691?v=4
 url: https://raw.githubusercontent.com/api-evangelist/paperless-post/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:secondary-market
@@ -12,12 +21,113 @@ created: '2026-08-04'
 modified: '2026-08-04'
 tags:
 - Company
-apis: []
+- Invitations
+- Events
+- Greeting Cards
+- Stationery
+- Consumer
+- E-Commerce
+- RSVP
+- Design
+apis:
+- aid: paperless-post:party-shop
+  name: Paperless Post Party Shop Agent Commerce Surface
+  description: 'The Paperless Post Party Shop storefront is the only machine-callable
+    surface on any paperlesspost.com host. It is Shopify-hosted and implements the
+    Universal Commerce Protocol (UCP) for agent-driven commerce: a UCP merchant
+    profile at /.well-known/ucp, an MCP endpoint at /api/ucp/mcp carrying the
+    search_catalog / create_cart / create_checkout / update_checkout /
+    complete_checkout tool set, OAuth 2.0 + OpenID Connect customer-account
+    authorization, published agent instructions at /llms.txt and /agents.md, and
+    anonymous read-only product and collection JSON endpoints. Checkout completion
+    requires contemporaneous buyer approval.'
+  humanURL: https://partyshop.paperlesspost.com/agents.md
+  baseURL: https://partyshop.paperlesspost.com
+  tags:
+  - Commerce
+  - MCP
+  - Agents
+  - Storefront
+  - Party Supplies
+  properties:
+  - type: MCPServer
+    url: mcp/paperless-post-mcp.yml
+  - type: Documentation
+    url: https://partyshop.paperlesspost.com/agents.md
+  - type: TermsOfService
+    url: https://partyshop.paperlesspost.com/policies/terms-of-service
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/paperless-post-domain-security.yml
 - type: Website
+  url: https://www.paperlesspost.com/
+- type: About
+  url: https://www.paperlesspost.com/about
+- type: Pricing
+  url: https://www.paperlesspost.com/pricing
+- type: SignUp
+  url: https://www.paperlesspost.com/accounts/new
+- type: Login
+  url: https://www.paperlesspost.com/session/new
+- type: TermsOfService
+  url: https://www.paperlesspost.com/terms-of-service
+- type: PrivacyPolicy
+  url: https://www.paperlesspost.com/privacy-policy
+- type: Support
+  url: https://paperlesspost.zendesk.com/hc/en-us
+- type: Blog
+  url: https://www.paperlesspost.com/blog/
+- type: GitHubOrganization
+  url: https://github.com/paperlesspost
+- type: Careers
+  url: https://www.paperlesspost.com/about/careers
+- type: StatusPage
+  url: https://status.paperlesspost.com/
+- type: Lifecycle
+  url: lifecycle/paperless-post-lifecycle.yml
+- type: LLMsTxt
+  url: llms/paperless-post-llms.txt
+- type: WellKnown
+  url: well-known/paperless-post-well-known.yml
+- type: MCPServer
+  url: mcp/paperless-post-mcp.yml
+- type: Authentication
+  url: authentication/paperless-post-authentication.yml
+- type: OAuthScopes
+  url: scopes/paperless-post-scopes.yml
+- type: Conformance
+  url: conformance/paperless-post-conformance.yml
+- type: Conventions
+  url: conventions/paperless-post-conventions.yml
+- type: SecondaryMarket
   url: https://forgeglobal.com/paperless-post_stock/
+x-coverage:
+  state: covered
+  reason: agent-commerce-surface-only
+  detail: >-
+    The core Paperless Post invitation product at www.paperlesspost.com has no
+    developer program and no machine-readable contract — every OpenAPI, GraphQL,
+    agent-card and /.well-known probe 404s — but the Party Shop storefront at
+    partyshop.paperlesspost.com serves a full UCP/MCP agent-commerce surface
+    (llms.txt, agents.md, /.well-known/ucp, OAuth/OIDC discovery), so the
+    provider is covered on that surface rather than empty.
+  evidence:
+  - url: https://partyshop.paperlesspost.com/.well-known/ucp
+    status: 200
+  - url: https://partyshop.paperlesspost.com/llms.txt
+    status: 200
+  - url: https://www.paperlesspost.com/openapi.json
+    status: 404
+  - url: https://www.paperlesspost.com/.well-known/agent-card.json
+    status: 404
+  checked: '2026-08-04'
+x-enrichment:
+  date: '2026-08-04'
+  status: enriched
+  artifacts_added: 15
+  pass: local-v1
