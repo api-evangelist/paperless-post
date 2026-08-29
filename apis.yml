@@ -10,6 +10,17 @@ description: 'Paperless Post is a New York City based digital and print statione
   publishes no public developer program, API reference, or machine-readable specification;
   the /api/v1 endpoints named in its robots.txt serve its own first-party web and
   mobile clients only.'
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://avatars.githubusercontent.com/u/282691?v=4
 url: https://raw.githubusercontent.com/api-evangelist/paperless-post/refs/heads/main/apis.yml
 x-type: company
