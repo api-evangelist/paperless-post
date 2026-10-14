@@ -1,5 +1,5 @@
 generated: '2026-10-12'
-method: none
+method: searched
 source:
 - https://zapier.com/apps/paperless-post/integrations
 - https://n8n.io/integrations/paperless-post/
@@ -8,9 +8,35 @@ source:
 checked:
 - https://composio.dev/toolkits/paperless-post
 - https://monid.ai/tools/paperless-post
+- https://mpl-pusa01.app.blackbaud.net/mktpl/v1/public/marketplace/applications
 - https://n8n.io/integrations/paperless-post/
 - https://zapier.com/apps/paperless-post/integrations
 summary: null
 marketplace_apps: []
-edges: []
+edges:
+- partner_name: Blackbaud (Blackbaud Marketplace)
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  partner_note: Blackbaud has no all/* repo (catalog gap); publisher side only
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: blackbaud-marketplace
+  evidence: https://app.blackbaud.com/marketplace/applications/9017176d-bcd8-44df-8a98-e579fd6a2b32
+  store: https://app.blackbaud.com/marketplace
+  store_api: https://mpl-pusa01.app.blackbaud.net/mktpl/v1/public/marketplace/applications
+  publisher: Paperless Post
+  publisher_match: domain
+  publisher_domain: paperlesspost.com
+  apps:
+  - 'Paperless Post '
+  listing_count: 1
+  compatible_solutions:
+  - renxt
+  badges:
+  - Reviewed by Blackbaud
+  detected_by: sweep-nonprofit.py
+  detected: '2026-10-14'
 templates: []
