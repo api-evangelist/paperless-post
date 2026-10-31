@@ -64,5 +64,104 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Paperless Post is a company surfaced via the API Evangelist harvest backlog (source: secondary-market) and added to the network as a stub for full-pipeline profiling.
-- https://forgeglobal.com/paperless-post_stock/
+Paperless Post is a New York City based digital and print stationery company whose platform lets people design, send, and manage online invitations, greeting cards, save-the-dates, and free Flyers for weddings, birthdays, holidays, business events, and other occasions. Founded in 2008 by siblings James and Alexa Hirschfeld, it pairs an in-house design studio with licensed designer collections (Oscar de la Renta, Rifle Paper Co., Marimekko and others) and adds RSVP tracking, guest messaging, event websites, mobile apps, and a Party Shop. Paperless Post publishes no public developer program, API reference, or machine-readable specification; the /api/v1 endpoints named in its robots.txt serve its own first-party web and mobile clients only.
+
+**Areas:** Company · Invitations · Event · Greeting Cards · Stationery · Consumer · E-Commerce · RSVP · Design
+
+## Paperless Post on APIs.io
+
+Everything profiled for Paperless Post is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/paperless-post/](https://apis.io/providers/paperless-post/)** — or go straight to one of the APIs or properties below.
+
+### APIs (1)
+
+- [Paperless Post Party Shop Agent Commerce Surface](https://apis.io/apis/paperless-post/party-shop/) — The Paperless Post Party Shop storefront is the only machine-callable surface on any paperlesspost.com host. It is Shopify-hosted and implements the…
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [paperless-post-party-shop](https://apis.io/servers/paperless-post/paperless-post-party-shop/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Paperless Post Authentication](https://apis.io/security/paperless-post/paperless-post-authentication/)
+- [Paperless Post Domain Security](https://apis.io/security/paperless-post/paperless-post-domain-security/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Paperless Post Scopes](https://apis.io/scopes/paperless-post/paperless-post-scopes/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.paperlesspost.com/)
+- [Pricing](https://www.paperlesspost.com/pricing)
+- [Sign up](https://www.paperlesspost.com/accounts/new)
+- [Support](https://paperlesspost.zendesk.com/hc/en-us)
+- [Blog](https://www.paperlesspost.com/blog/)
+- [Terms of service](https://www.paperlesspost.com/terms-of-service)
+- [Privacy policy](https://www.paperlesspost.com/privacy-policy)
+- [GitHub](https://github.com/paperlesspost)
+- [Status](https://status.paperlesspost.com/)
+
+## API Evangelist rating
+
+**Kin Score 28.5** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 75.0 |
+| Contract quality | 0.0 |
+| Contract governance | 18.2 |
+| Operational transparency | 18.4 |
+| Developer ergonomics | 28.6 |
+| Access clarity | 44.7 |
+
+**Agent readiness 17.4** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | platform (partial credit) |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | verified |
+| Dynamic Client Registration | — |
+| Agentic Commerce | platform (partial credit) |
+
+**Regulatory alignment 31.3** — Payments
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/paperless-post/](https://apis.io/providers/paperless-post/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Paperless Post: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/paperless-post/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
